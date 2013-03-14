@@ -10,6 +10,7 @@
  * @property string $dtEmprestimo
  * @property string $dtDevolucao
  * @property string $devolvido
+ * @property string $observacao
  *
  * The followings are the available model relations:
  * @property Livro $idLivro0
@@ -49,7 +50,7 @@ class Movimentacao extends CActiveRecord
 			array('dtDevolucao', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('idMovimentacao, idLivro, idPessoa, dtEmprestimo, dtDevolucao, devolvido', 'safe', 'on'=>'search'),
+			array('idMovimentacao, idLivro, idPessoa, dtEmprestimo, dtDevolucao, devolvido, observacao', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -78,6 +79,7 @@ class Movimentacao extends CActiveRecord
 			'dtEmprestimo' => 'Data Emprestimo',
 			'dtDevolucao' => 'Data Devolucao',
 			'devolvido' => 'Devolvido',
+			'observacao'=> 'Observação'
 		);
 	}
 
@@ -98,6 +100,7 @@ class Movimentacao extends CActiveRecord
 		$criteria->compare('dtEmprestimo',$this->dtEmprestimo,true);
 		$criteria->compare('dtDevolucao',$this->dtDevolucao,true);
 		$criteria->compare('devolvido',$this->devolvido,true);
+		$criteria->compare('observacao',$this->observacao,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -92,11 +92,27 @@ class MovimentacaoController extends Controller
 	public function actionDevolver($id)
 	{
 		$model=$this->loadModel($id);
-		
-		$model->dtDevolucao = new CDbExpression('NOW()');
-		$model->devolvido = 'S';
-		if($model->save())
-			$this->redirect(array('index'));
+		if(isset($_POST['Movimentacao']))
+		{
+			$obs = trim($_POST['Movimentacao']['observacao']);	
+			if(!empty($obs))
+			{
+				$model->observacao = $_POST['Movimentacao']['observacao'];
+			}
+				
+			$model->dtDevolucao = new CDbExpression('NOW()');
+			$model->devolvido = 'S'; 		
+
+			if($model->save())
+				$this->redirect(array('index'));			
+		}
+		else
+		{
+			$this->render('devolver',array(
+			'model'=>$model,
+		));
+		}
+			
 	}
 
 	/**

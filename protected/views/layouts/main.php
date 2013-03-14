@@ -31,6 +31,7 @@
 			'items'=>array(
 				array('label'=>'Início', 'url'=>array('/site/index')),
 				array('label'=>'Autores', 'url'=>array('/autor/index'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Consultas', 'url'=>array('/consulta/index'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Editoras', 'url'=>array('/editora/index'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Livros', 'url'=>array('/livro/index'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Movimentação', 'url'=>array('/movimentacao/index'), 'visible'=>!Yii::app()->user->isGuest),

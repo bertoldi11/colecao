@@ -37,7 +37,6 @@
 				'id'=>'devolver-form',
 				'enableAjaxValidation'=>false,
 				'action'=>CHtml::normalizeUrl(array('movimentacao/devolver', 'id'=>$data->idMovimentacao)),
-				'htmlOptions'=> array('onsubmit'=>'return confirm("Devolver esse livro?")')
 			)); ?>
 			
 				<div class="row buttons">
@@ -45,5 +44,12 @@
 				</div>	
 				
 			<?php $this->endWidget(); ?>
+		
+		<?php else:?>
+			<?php if(null !== $data->observacao):?>
+				<b><?php echo CHtml::encode($data->getAttributeLabel('observacao')); ?>:</b>
+				<?php echo CHtml::encode($data->observacao); ?>
+				<br />
+			<?php endif;?>
 		<?php endif;?>
 </div>
