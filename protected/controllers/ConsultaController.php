@@ -33,17 +33,40 @@ class ConsultaController extends Controller
 	}
 	
 	public function actionLivro(){
-		$dataProvider=new CActiveDataProvider('Livro', array(
-		    'criteria'=>array(
-		        'with'=>array('Autor','Pessoa'),
-		    ),
-		    'pagination'=>array(
-		        'pageSize'=>10,
-		    ),
-		));
+		
+		$dataProvider = array();
+		
+		$model = new Livro;
+		
+		if(isset($_POST['Livro']))
+		{
+			$dataProvider=new CActiveDataProvider('Livro', array(
+			    'criteria'=>array(
+			    	'condition' => 'titulo like :titulo',
+			    	'params'=>array(':titulo'=>$_POST['Livro']['titulo']."%"),
+			        'with'=>array(
+			        	'autors',
+			        	'movimentacaos' => array(
+							'order'=>'idMovimentacao DESC'
+						)
+					),
+			    ),
+			    'pagination'=>array(
+			        'pageSize'=>5,
+			    ),
+			));
 			
-		$this->render('livros',array(
-			'dataProvider'=>$dataProvider,
-		));
+			$this->render('livros',array(
+				'dataProvider'=>$dataProvider,
+				'model'=> $model
+			));
+		}	
+		else
+		{
+			$this->render('livros',array(
+				'model'=> $model
+			));
+	
+		}
 	}
 }
