@@ -12,6 +12,5 @@
 		Não
 	<?php else:?>
 		<?php echo CHtml::link('Sim', array('movimentacao/view', 'id'=>$data->movimentacaos[0]->idMovimentacao)); ?>
-	<?php endif;?>
-	
+	<?php endif;?>	
 </div>

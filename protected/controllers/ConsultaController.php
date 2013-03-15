@@ -17,7 +17,7 @@ class ConsultaController extends Controller
 		return array(
 			array(
 				'allow',
-				'actions'=>array('index','livro'),
+				'actions'=>array('index','livro', 'Movimentacao'),
 				'users'=>array('@')
 			),
 			array(
@@ -68,5 +68,34 @@ class ConsultaController extends Controller
 			));
 	
 		}
+	}
+
+	public function actionMovimentacao()
+	{
+		$model = new ConsultaMovimentacaoForm;
+		$dadosRetorno = array('model'=>$model);
+		
+		if(isset($_POST['ConsultaMovimentacaoForm']))
+		{
+			$model->attributes=$_POST['ConsultaMovimentacaoForm'];
+			if($model->validate())
+			{
+				$dadosRetorno['dataProvider'] = new CActiveDataProvider('Movimentacao', array(
+				    'criteria'=>array(
+				    	'condition' => 'dtEmprestimo between :dtIni and :dtFim',
+				    	'params'=>array(':dtIni'=>$model->dtIni, ':dtFim'=>$model->dtFim),
+				        'with'=>array(
+				        	'idLivro0',
+				        	'idPessoa0'
+						),
+				    ),
+				    'pagination'=>array(
+				        'pageSize'=>5,
+				    ),
+				));
+			}
+		}
+			
+		$this->render('movimentacao',$dadosRetorno);
 	}
 }
