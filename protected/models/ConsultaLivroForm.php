@@ -1,14 +1,13 @@
 <?php
 
 /**
- * ConsultaMovimentacaoForm class.
- * ConsultaMovimentacaoForm is the data structure for keeping
- * consultaMovimentacao form data. It is used by the 'movimentacao' action of 'ConsultaController'.
+ * ContactForm class.
+ * ContactForm is the data structure for keeping
+ * contact form data. It is used by the 'contact' action of 'SiteController'.
  */
-class ConsultaMovimentacaoForm extends CFormModel
+class ConsultaLivroForm extends CFormModel
 {
-	public $dtIni;
-	public $dtFim;
+	public $titulo;
 
 	/**
 	 * Declares the validation rules.
@@ -16,7 +15,8 @@ class ConsultaMovimentacaoForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			array('dtIni, dtFim', 'required'),
+			array('titulo', 'required'),
+			array('titulo', 'length', 'max'=>100),
 		);
 	}
 
@@ -28,8 +28,7 @@ class ConsultaMovimentacaoForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'dtIni'=>'Início',
-			'dtFim'=>'Fim',
+			'titulo'=>'Título',
 		);
 	}
 }

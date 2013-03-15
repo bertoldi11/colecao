@@ -34,40 +34,34 @@ class ConsultaController extends Controller
 	
 	public function actionLivro(){
 		
-		$dataProvider = array();
+		$model = new ConsultaLivroForm;
+		$dadosRetorno = array('model'=>$model);
 		
-		$model = new Livro;
-		
-		if(isset($_POST['Livro']))
+		if(isset($_POST['ConsultaLivroForm']))
 		{
-			$dataProvider=new CActiveDataProvider('Livro', array(
-			    'criteria'=>array(
-			    	'condition' => 'titulo like :titulo',
-			    	'params'=>array(':titulo'=>$_POST['Livro']['titulo']."%"),
-			        'with'=>array(
-			        	'autors',
-			        	'movimentacaos' => array(
-							'order'=>'idMovimentacao DESC'
-						)
-					),
-			    ),
-			    'pagination'=>array(
-			        'pageSize'=>5,
-			    ),
-			));
-			
-			$this->render('livros',array(
-				'dataProvider'=>$dataProvider,
-				'model'=> $model
-			));
+			$model->attributes = $_POST['ConsultaLivroForm'];
+			if($model->validate())
+			{
+				$dadosRetorno['dataProvider'] = new CActiveDataProvider('Livro', array(
+				    'criteria'=>array(
+				    	'condition' => 'titulo like :titulo',
+				    	'params'=>array(':titulo'=>$model->titulo."%"),
+				        'with'=>array(
+				        	'autors',
+				        	'movimentacaos' => array(
+								'order'=>'idMovimentacao DESC'
+							)
+						),
+				    ),
+				    'pagination'=>array(
+				        'pageSize'=>5,
+				    ),
+				));
+			}
 		}	
-		else
-		{
-			$this->render('livros',array(
-				'model'=> $model
-			));
-	
-		}
+
+		$this->render('livros',$dadosRetorno);
+
 	}
 
 	public function actionMovimentacao()
