@@ -1,48 +1,26 @@
-<?php
-/* @var $this PessoaController */
-/* @var $model Pessoa */
-/* @var $form CActiveForm */
-?>
-
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'pessoa-form',
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Campos com <span class="required">*</span> são obrigatórios.</p>
+	<p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'nome'); ?>
-		<?php echo $form->textField($model,'nome',array('size'=>60,'maxlength'=>60)); ?>
-		<?php echo $form->error($model,'nome'); ?>
-	</div>
+	<?php echo $form->textFieldRow($model,'nome',array('class'=>'span5','maxlength'=>60)); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'telefone'); ?>
-		<?php echo $form->textField($model,'telefone',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'telefone'); ?>
-	</div>
+	<?php echo $form->textFieldRow($model,'telefone',array('class'=>'span5','maxlength'=>11)); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'celular'); ?>
-		<?php echo $form->textField($model,'celular',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'celular'); ?>
-	</div>
+	<?php echo $form->textFieldRow($model,'celular',array('class'=>'span5','maxlength'=>11)); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'email'); ?>
-	</div>
+	<?php echo $form->textFieldRow($model,'email',array('class'=>'span5','maxlength'=>100)); ?>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="form-actions">
+		<?php $this->widget('bootstrap.widgets.TbButton', array(
+			'buttonType'=>'submit',
+			'type'=>'primary',
+			'label'=>$model->isNewRecord ? 'Create' : 'Save',
+		)); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->

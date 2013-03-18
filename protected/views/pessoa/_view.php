@@ -1,12 +1,7 @@
-<?php
-/* @var $this PessoaController */
-/* @var $data Pessoa */
-?>
-
 <div class="view">
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('idPessoa')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->idPessoa), array('view', 'id'=>$data->idPessoa)); ?>
+	<?php echo CHtml::link(CHtml::encode($data->idPessoa),array('view','id'=>$data->idPessoa)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('nome')); ?>:</b>

@@ -4,5 +4,9 @@
 $this->pageTitle=Yii::app()->name;
 
 ?>
+<?php $this->beginWidget('bootstrap.widgets.TbHeroUnit',array(
+    'heading'=>'Bem vindo ao '.CHtml::encode(Yii::app()->name),
+)); ?>
 
-<h1>Bem vindo ao: <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+
+<?php $this->endWidget(); ?>

@@ -2,15 +2,24 @@
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
+//Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Controle de Empréstimo de Livros',
-
+	
+	// Idioma
+    'sourceLanguage' => 'pt_br',
+    'language' => 'pt_br',
+    'timeZone' => 'America/Sao_Paulo',
+        
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array(
+		'log',
+		'bootstrap'
+	),
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -24,6 +33,9 @@ return array(
 			'password'=>'654321',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
+			'generatorPaths'=>array(
+                'bootstrap.gii',
+            ),
 		),
 	),
 
@@ -33,6 +45,10 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
+		'bootstrap'=>array(
+            'class'=>'ext.bootstrap.components.Bootstrap',
+            'responsiveCss' => true,
+        ),
 		// uncomment the following to enable URLs in path-format
 		/*
 		'urlManager'=>array(
@@ -48,7 +64,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=colecoes',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'vinisex@123',
+			'password' => '',
 			'charset' => 'utf8',
 		),
 		'errorHandler'=>array(
