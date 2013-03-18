@@ -20,4 +20,22 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+	
+	function inverteData($date, $mostrarHora =  FALSE)
+	{
+		/**
+		 * TODO: Validar se vai mostrar a hora ou não
+		 * TODO: Se for pra mostrar a hora, e não tiver a hora, pegar hora do sistema
+		 */
+		if(strpos($date,"-")!==false){
+			$date = str_replace("-","/",$date);
+		}
+		
+		$dados = explode(" ", $date);
+		$data = explode("/",$dados[0]);
+	        if(count($dados) == 1)
+	            return $data[2]."/".$data[1]."/".$data[0];
+	        else
+	            return $data[2]."/".$data[1]."/".$data[0]." - ".$dados[1];
+	}
 }

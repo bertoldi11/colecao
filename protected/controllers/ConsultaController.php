@@ -78,10 +78,7 @@ class ConsultaController extends Controller
 				    'criteria'=>array(
 				    	'condition' => 'dtEmprestimo between :dtIni and :dtFim',
 				    	'params'=>array(':dtIni'=>$model->dtIni, ':dtFim'=>$model->dtFim),
-				        'with'=>array(
-				        	'idLivro0',
-				        	'idPessoa0'
-						),
+				        'with'=>array('idLivro0','idPessoa0'),
 				    ),
 				    'pagination'=>array(
 				        'pageSize'=>5,

@@ -24,8 +24,21 @@ $this->menu=array(
 		'idMovimentacao',
 		'idLivro0.titulo',
 		'idPessoa0.nome',
-		'dtEmprestimo',
-		'dtDevolucao',
-		'devolvido',
+		array(
+            'label'=>'Empréstimo',
+            'type'=>'raw',
+            'value'=> $this->inverteData($model->dtEmprestimo),
+        ),
+        array(
+            'label'=>'Devolução',
+            'type'=>'raw',
+            'value'=> ($model->dtDevolucao !== null) ? $this->inverteData($model->dtDevolucao) : '-',
+        ),
+         array(
+            'label'=>'Devolvido',
+            'type'=>'raw',
+            'value'=> ($model->devolvido == 'S') ? 'Sim' : CHtml::link(CHtml::encode('Não'), array('movimentacao/devolver','id'=>$model->idMovimentacao)),
+        ),
+		
 	),
 )); ?>

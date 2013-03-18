@@ -34,7 +34,7 @@ $this->widget('zii.widgets.CDetailView', array(
 		'titulo',
 		'subtitulo',
 		'paginas',
-		array(               // related city displayed as a link
+		array(
             'label'=>'Autor(es)',
             'type'=>'raw',
             'value'=> $autores//CHtml::link(CHtml::encode($model->autors->nome), array('city/view','id'=>$model->city->id)),

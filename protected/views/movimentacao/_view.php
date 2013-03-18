@@ -29,23 +29,11 @@
 		<br />
 	
 		<b><?php echo CHtml::encode($data->getAttributeLabel('devolvido')); ?>:</b>
-		<?php echo CHtml::encode($data->devolvido); ?>
-		<br />
 		
 		<?php if($data->devolvido === 'N'): ?>
-			<?php $form=$this->beginWidget('CActiveForm', array(
-				'id'=>'devolver-form',
-				'enableAjaxValidation'=>false,
-				'action'=>CHtml::normalizeUrl(array('movimentacao/devolver', 'id'=>$data->idMovimentacao)),
-			)); ?>
-			
-				<div class="row buttons">
-					<?php echo CHtml::submitButton('Devolver'); ?>
-				</div>	
-				
-			<?php $this->endWidget(); ?>
-		
+			<?php echo CHtml::link(CHtml::encode('Não'), array('movimentacao/devolver','id'=>$data->idMovimentacao));?>		
 		<?php else:?>
+			Sim <br>
 			<?php if(null !== $data->observacao):?>
 				<b><?php echo CHtml::encode($data->getAttributeLabel('observacao')); ?>:</b>
 				<?php echo CHtml::encode($data->observacao); ?>
