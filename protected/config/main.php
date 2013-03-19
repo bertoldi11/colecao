@@ -64,7 +64,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=colecoes',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'vinisex@123',
 			'charset' => 'utf8',
 		),
 		'errorHandler'=>array(
