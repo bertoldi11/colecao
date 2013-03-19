@@ -6,31 +6,63 @@
 
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'movimentacao-form',
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
 )); ?>
 
 	<p class="note">Campos com <span class="required">*</span> são obrigatórios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'idLivro'); ?>
-		<?php echo $form->dropDownList($model,'idLivro', CHtml::listData(Livro::model()->findAll(), 'idLivro', 'titulo'), array('empty'=>'Selecione')); ?>
-		<?php echo $form->error($model,'idLivro'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'idPessoa'); ?>
-		<?php echo $form->dropDownList($model,'idPessoa', CHtml::listData(Pessoa::model()->findAll(), 'idPessoa', 'nome'), array('empty'=>'Selecione')); ?>
-		<?php echo $form->error($model,'idPessoa'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Emprestar' : 'Devolver'); ?>
-	</div>
-
+	
+	
+	<?php 
+		echo $form->labelEx($model,'idLivro'); 
+		$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+			'name'=>'Livro',
+		    'sourceUrl' =>Yii::app()->createUrl('livro/autoComplete'),
+		    // additional javascript options for the autocomplete plugin
+		    'options'=>array(
+		        'minLength'=>'2',
+		        'select'=> 'js: function(event,ui) {jQuery("#idLivro").val(ui.item.id);}',
+		    ),
+		    'htmlOptions'=>array(
+		        'style'=>'height:20px;',
+		        'class'=>'span5'
+		    ),
+		));
+		
+		echo $form->labelEx($model,'idPessoa'); 
+		$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+			'name'=>'Pessoa',
+		    'sourceUrl' =>Yii::app()->createUrl('pessoa/autoComplete'),
+		    // additional javascript options for the autocomplete plugin
+		    'options'=>array(
+		        'minLength'=>'2',
+		        'select'=> 'js: function(event,ui) {jQuery("#idPessoa").val(ui.item.id);}',
+		    ),
+		    'htmlOptions'=>array(
+		        'style'=>'height:20px;',
+		        'class'=>'span5'
+		    ),
+		));
+	
+		echo "<br />";
+	?>
+	
+	<button id="yw0" class="btn btn-small">
+		<i class=" icon-arrow-right"></i>
+		Emprestar
+	</button>
+	
+	<input type="hidden" name="Movimentacao[idLivro]" id="idLivro" /><input type="hidden" name="Movimentacao[idPessoa]" id="idPessoa"/>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<script>
+
+	jQuery('#Movimentacao_idLivro').autocomplete({
+		'select': function(event,ui) {alert(ui.item.id);}
+	});
+</script>

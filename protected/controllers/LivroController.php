@@ -32,7 +32,7 @@ class LivroController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','autoComplete'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,6 +43,18 @@ class LivroController extends Controller
 				'users'=>array('*'),
 			),
 		);
+	}
+	
+	public function actionAutoComplete($term)
+	{
+		$livros = array();	
+		$model = Livro::model()->findAll('titulo like :titulo',array(':titulo'=>$term.'%'));
+		foreach($model as $livro)
+		{
+			$livros[] = array('label' => $livro->titulo, 'id'=>$livro->idLivro);
+		}
+		
+		die(json_encode($livros));
 	}
 
 	/**

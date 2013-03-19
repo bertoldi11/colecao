@@ -32,7 +32,7 @@ class PessoaController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','autoComplete'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,6 +43,18 @@ class PessoaController extends Controller
 				'users'=>array('*'),
 			),
 		);
+	}
+	
+	public function actionAutoComplete($term)
+	{
+		$pessoas = array();	
+		$model = Pessoa::model()->findAll('nome like :nome',array(':nome'=>$term.'%'));
+		foreach($model as $pessoa)
+		{
+			$pessoas[] = array('label' => $pessoa->nome, 'id'=>$pessoa->idPessoa);
+		}
+		
+		die(json_encode($pessoas));
 	}
 
 	/**
