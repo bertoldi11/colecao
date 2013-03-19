@@ -1,6 +1,5 @@
 assets/
 protected/runtime/
-protected/config/main.php
 themes/classic/views/
 index.php
 .project
