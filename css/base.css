@@ -8,7 +8,7 @@
 
 body {
     position: relative;
-    padding-top: 80px;
+    padding-top: 50px;
 }
 
 /* Footer
@@ -30,4 +30,32 @@ body {
 .footer-links li {
     display: inline;
     margin-right: 10px;
+}
+
+/* Breadcrumb
+-------------------------------------------------- */
+.breadcrumb {
+  padding: 8px 15px;
+  margin: 0 0 20px;
+  list-style: none;
+  background-color: #f5f5f5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+.breadcrumb > li {
+  display: inline-block;
+  *display: inline;
+  text-shadow: 0 1px 0 #ffffff;
+  *zoom: 1;
+}
+
+.breadcrumb > li > .divider {
+  padding: 10 5px;
+  color: #ccc;
+}
+
+.breadcrumb > .active {
+  color: #999999;
 }

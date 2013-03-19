@@ -8,7 +8,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Controle de Empréstimo de Livros',
+	'name'=>'CEL - Controle de Empréstimo de Livros',
 	
 	// Idioma
     'sourceLanguage' => 'pt_br',
@@ -25,6 +25,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.widgets.bootstrap.*',
 	),
 
 	'modules'=>array(

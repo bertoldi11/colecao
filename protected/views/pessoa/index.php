@@ -1,16 +1,18 @@
 <?php
-$this->breadcrumbs=array(
-	'Pessoas',
-);
-
-$this->menu=array(
-	array('label'=>'Criar Pessoa','url'=>array('create')),
-	array('label'=>'Gerenciar Pessoa','url'=>array('admin')),
-);
-?>
-
-<h1>Pessoas</h1>
-<?php
+	$this->breadcrumbs=array(
+		'Pessoas',
+	);
+	
+	
+	// Tabs de navegacao
+	$this->widget('bootstrap.widgets.TbTabs', array(
+		'type'=>'tabs', // 'tabs' or 'pills'
+		'tabs'=>array(
+			array('label'=>'Listar', 'url'=>array('index'), 'active'=>true),
+			array('label'=>'Criar', 'url'=>array('create')),
+			array('label'=>'Gerenciar', 'url'=>array('admin')),
+		),
+	));
 
 	// $gridColumns
 	$gridColumns = array(
@@ -29,7 +31,7 @@ $this->menu=array(
 	);
 	
 	$this->widget('bootstrap.widgets.TbGridView', array(
-	'type'=>'bordered',
+	'type'=>'striped bordered ',
 	'dataProvider'=>$dataProvider,
 	'template'=>"{items}",
 	'columns'=>$gridColumns,
