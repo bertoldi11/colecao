@@ -18,7 +18,7 @@ class TbBreadcrumbs extends CBreadcrumbs
 	/**
 	 * @var string the separator between links in the breadcrumbs. Defaults to '/'.
 	 */
-	public $separator = '/';
+	public $separator = '>';
 
 	/**
 	 * Initializes the widget.
@@ -31,7 +31,7 @@ class TbBreadcrumbs extends CBreadcrumbs
 			$this->htmlOptions['class'] = 'breadcrumb';
 
 		// apply bootstrap style
-		$this->separator = '<span class="divider">' . $this->separator . '</span>';
+		$this->separator = '<span class="divider"> ' . $this->separator . ' </span>';
 	}
 
 	/**

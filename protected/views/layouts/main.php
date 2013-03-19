@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
 	
+	<?php Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl.'/protected/ext/bootstrap/assets/css/bootstrap.min.css'); ?>
 	<!--
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
@@ -27,7 +28,7 @@
 <div class="">	
 	<?php
 		$this->widget('bootstrap.widgets.TbNavbar', array(
-			'brand' => Yii::app()->name,
+			'brand' => 'CEL',
 			'items' => array(
 				array(
 					'class' => 'bootstrap.widgets.TbMenu',

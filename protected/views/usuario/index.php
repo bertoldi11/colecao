@@ -32,7 +32,7 @@ $this->menu=array(
 	);
 	
 	$this->widget('bootstrap.widgets.TbGridView', array(
-	'type'=>'bordered',
+	'type'=>'striped',
 	'dataProvider'=>$dataProvider,
 	'template'=>"{items}",
 	'columns'=>$gridColumns,
