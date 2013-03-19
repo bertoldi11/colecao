@@ -6,7 +6,7 @@
 
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'editora-form',
 	'enableAjaxValidation'=>false,
 )); ?>
@@ -23,25 +23,34 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'razaoSocial'); ?>
-		<?php echo $form->textField($model,'razaoSocial',array('size'=>60,'maxlength'=>80)); ?>
+		<?php echo $form->textField($model,'razaoSocial',array('size'=>80,'maxlength'=>80)); ?>
 		<?php echo $form->error($model,'razaoSocial'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'nomeFantasia'); ?>
-		<?php echo $form->textField($model,'nomeFantasia',array('size'=>60,'maxlength'=>80)); ?>
+		<?php echo $form->textField($model,'nomeFantasia',array('size'=>80,'maxlength'=>80)); ?>
 		<?php echo $form->error($model,'nomeFantasia'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'telefone'); ?>
-		<?php echo $form->textField($model,'telefone',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'telefone'); ?>
+		<?php $this->widget('CMaskedTextField', array(
+				'model' => $model,
+				'attribute' => 'telefone',
+				'mask' => '(99) 9999-9999',
+				'htmlOptions' => array('size' => 15)
+		)); ?>
+		<?php echo $form->error($model,'nomeFantasia'); ?>
 	</div>
-
 	<div class="row">
 		<?php echo $form->labelEx($model,'fax'); ?>
-		<?php echo $form->textField($model,'fax',array('size'=>11,'maxlength'=>11)); ?>
+		<?php $this->widget('CMaskedTextField', array(
+				'model' => $model,
+				'attribute' => 'fax',
+				'mask' => '(99) 9999-9999',
+				'htmlOptions' => array('size' => 15)
+		)); ?>
 		<?php echo $form->error($model,'fax'); ?>
 	</div>
 
@@ -52,13 +61,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'site'); ?>
-		<?php echo $form->textField($model,'site',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textFieldRow($model, 'site', array('prepend'=>'www.','size'=>50,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'site'); ?>
 	</div>
-
+	<br>
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Salvar' : 'Alterar'); ?>
+		<button id="yw0" class="btn btn-small">
+			<i class=" icon-arrow-right"></i>
+			<?php echo $model->isNewRecord ? 'Salvar' : 'Alterar';?>
+		</button>
 	</div>
 
 <?php $this->endWidget(); ?>
