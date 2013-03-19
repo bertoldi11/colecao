@@ -17,7 +17,12 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'cnpj'); ?>
-		<?php echo $form->textField($model,'cnpj',array('size'=>15,'maxlength'=>15)); ?>
+		<?php $this->widget('CMaskedTextField', array(
+				'model' => $model,
+				'attribute' => 'cnpj',
+				'mask' => '99.999.999/9999-99',
+				'htmlOptions' => array('size' => 15)
+		)); ?>
 		<?php echo $form->error($model,'cnpj'); ?>
 	</div>
 
