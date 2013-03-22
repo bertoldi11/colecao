@@ -2,7 +2,7 @@
 	<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 		'id'=>'pessoa-form',
 		'enableAjaxValidation'=>false,
-		'action'=>Yii::app()->createUrl('pessoa/create')
+		'action'=>$model->isNewRecord ? Yii::app()->createUrl('pessoa/create') : Yii::app()->createUrl('pessoa/update', array('id'=>$model->idPessoa)) 
 	)); ?>
 	
 		<p class="help-block">Campos  com <span class="required">*</span> são obrigatórios.</p>

@@ -15,7 +15,7 @@ class PessoaController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			// 'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -32,7 +32,7 @@ class PessoaController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','autoComplete'),
+				'actions'=>array('create','update','autoComplete', 'delete'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -106,6 +106,7 @@ class PessoaController extends Controller
 
 		if(isset($_POST['Pessoa']))
 		{
+			$_POST['Pessoa']['telefone'] = str_replace(array('(', ')', ' ', '-'), '', $_POST['Pessoa']['telefone']);	
 			$model->attributes=$_POST['Pessoa'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idPessoa));

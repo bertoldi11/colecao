@@ -10,9 +10,9 @@
 			array(
 				'htmlOptions' => array('nowrap'=>'nowrap'),
 				'class'=>'bootstrap.widgets.TbButtonColumn',
-				'viewButtonUrl'=>null,
-				'updateButtonUrl'=>null,
-				'deleteButtonUrl'=>null,
+				'viewButtonUrl'=>'Yii::app()->createUrl("pessoa/view", array("id"=>"$data->idPessoa"))',
+				'updateButtonUrl'=>'Yii::app()->createUrl("pessoa/update", array("id"=>"$data->idPessoa"))',
+				'deleteButtonUrl'=>'Yii::app()->createUrl("pessoa/delete", array("id"=>"$data->idPessoa"))',
 			)
 		);
 		
