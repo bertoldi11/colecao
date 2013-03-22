@@ -2,7 +2,7 @@
 $this->breadcrumbs=array(
 	'Pessoas'=>array('index'),
 	$model->idPessoa=>array('view','id'=>$model->idPessoa),
-	'Update',
+	'Alterar',
 );
 
 $this->menu=array(
@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Pessoa <?php echo $model->idPessoa; ?></h1>
+<h1>Alterar dados de: <?php echo $model->nome; ?> (# <?php echo $model->idPessoa; ?>)</h1>
 
 <?php echo $this->renderPartial('_form',array('model'=>$model)); ?>
