@@ -134,9 +134,12 @@ class PessoaController extends Controller
 	 */
 	public function actionIndex()
 	{
+		$model = new Pessoa;
+			
 		$dataProvider=new CActiveDataProvider('Pessoa');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+			'model' => $model
 		));
 	}
 
