@@ -59,10 +59,3 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
-
-<script>
-
-	jQuery('#Movimentacao_idLivro').autocomplete({
-		'select': function(event,ui) {alert(ui.item.id);}
-	});
-</script>

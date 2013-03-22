@@ -81,6 +81,7 @@ class PessoaController extends Controller
 
 		if(isset($_POST['Pessoa']))
 		{
+			$_POST['Pessoa']['telefone'] = str_replace(array('(', ')', ' ', '-'), '', $_POST['Pessoa']['telefone']);
 			$model->attributes=$_POST['Pessoa'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idPessoa));

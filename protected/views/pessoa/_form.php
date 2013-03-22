@@ -2,6 +2,7 @@
 	<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 		'id'=>'pessoa-form',
 		'enableAjaxValidation'=>false,
+		'action'=>Yii::app()->createUrl('pessoa/create')
 	)); ?>
 	
 		<p class="help-block">Campos  com <span class="required">*</span> são obrigatórios.</p>
